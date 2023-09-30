@@ -29,12 +29,28 @@ public class PlayerMovement : MonoBehaviour {
     void Update() {
         velX = Input.GetAxis("Horizontal");
 
-        if(Input.GetKey(KeyCode.Space)) {
+        if(isGrounded && Input.GetKey(KeyCode.Space)) {
             rb2D.velocity = new Vector2(rb2D.velocity.x, jumpHeight);
         }
     }
 
 	private void FixedUpdate() {
-        rb2D.velocity = new Vector2(velX * maxSpeed, rb2D.velocity.y);
+        Bounds colliderBounds = mainCollider.bounds;
+        Vector2 pointA = colliderBounds.min;
+        Vector2 pointB = pointA + new Vector2(colliderBounds.max.x - colliderBounds.min.x, -0.1f);
+
+        Collider2D[] colliders = Physics2D.OverlapAreaAll(pointA, pointB, 7);
+
+
+        isGrounded = false;
+
+		for (int i = 0; i < colliders.Length; i++) {
+			if (colliders[i] != mainCollider) {
+				isGrounded = true;
+				break;
+			}
+		}
+
+		rb2D.velocity = new Vector2(velX * maxSpeed, rb2D.velocity.y);
 	}
 }

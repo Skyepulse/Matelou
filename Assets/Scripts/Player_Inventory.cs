@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player_Inventory : MonoBehaviour
 {
@@ -9,6 +10,14 @@ public class Player_Inventory : MonoBehaviour
 
     [SerializeField]
     private Inventory_Object_Trigger _trigger;
+    [SerializeField]
+    private Image _image;
+    private Sprite _default_gui_sprite;
+
+    private void Start()
+    {
+        _default_gui_sprite = _image.sprite;
+    }
 
     //Add a new object to inventory and send a reference to the previous object in inventory
     public Inventory_Object add_to_inventory(Inventory_Object o)
@@ -33,6 +42,7 @@ public class Player_Inventory : MonoBehaviour
 
     private void Update()
     {
+        update_gui();
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (_trigger.GetInventory_Object() != null) add_to_inventory(_trigger.GetInventory_Object());
@@ -56,6 +66,17 @@ public class Player_Inventory : MonoBehaviour
         if(_inventory_object != null)
         {
             _inventory_object.use();
+        }
+    }
+
+    private void update_gui()
+    {
+        if(_inventory_object != null)
+        {
+            _image.sprite = _inventory_object.get_sprite();
+        } else
+        {
+            _image.sprite = _default_gui_sprite;
         }
     }
 }

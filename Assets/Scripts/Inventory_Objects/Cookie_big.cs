@@ -6,7 +6,13 @@ public class Cookie_big : Inventory_Object
 {
     public override void use()
     {
-        GameManager.Instance.shrinker.shrinkFactor *= 2;
-        Destroy(this.gameObject);
+        if (GameManager.Instance.shrinker.shrinkFactor < 2)
+        {
+            GameManager.Instance.shrinker.shrinkFactor *= 2;
+            Destroy(this.gameObject);
+        } else
+        {
+            Debug.Log("<color=blue>Cannot be used right now</color>");
+        }
     }
 }

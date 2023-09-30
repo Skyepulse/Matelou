@@ -9,6 +9,9 @@ public class Shrinker : MonoBehaviour {
     public float shrinkFactor = 1.0f;
     public float shrinkSpeed = 1.0f;
 
+    //Shrink status == 1 small, == 2 mid, == 3 big
+    public int shrinkstatus = 2;
+
 	private float _cameraBaseSize;
 	private Vector3 _playerBaseSize;
     private float _currentShrink = 1.0f;

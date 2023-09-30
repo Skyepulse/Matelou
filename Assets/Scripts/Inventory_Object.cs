@@ -6,6 +6,7 @@ public abstract class Inventory_Object : MonoBehaviour
 {
     [SerializeField]
     private Sprite object_sprite;
+    protected Vector2 offset;
 
     public virtual Sprite get_sprite()
     {
@@ -25,9 +26,9 @@ public abstract class Inventory_Object : MonoBehaviour
 
     public virtual void restore(Vector2 pos)
     {
-        transform.position = pos;
-        GetComponent<SpriteRenderer>().enabled = false;
-        GetComponent<BoxCollider2D>().enabled = false;
+        transform.position = pos + offset;
+        GetComponent<SpriteRenderer>().enabled = true;
+        GetComponent<BoxCollider2D>().enabled = true;
     }
 
     public abstract void use();

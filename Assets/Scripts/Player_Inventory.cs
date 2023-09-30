@@ -11,6 +11,8 @@ public class Player_Inventory : MonoBehaviour
     [SerializeField]
     private Inventory_Object_Trigger _trigger;
     [SerializeField]
+    private GameObject drop_point;
+    [SerializeField]
     private Image _image;
     private Sprite _default_gui_sprite;
 
@@ -45,7 +47,15 @@ public class Player_Inventory : MonoBehaviour
         update_gui();
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (_trigger.GetInventory_Object() != null) add_to_inventory(_trigger.GetInventory_Object());
+            if (_trigger.GetInventory_Object() != null)
+            {
+                Inventory_Object to_drop_object = add_to_inventory(_trigger.GetInventory_Object());
+                if (to_drop_object != null)
+                {
+                    drop(to_drop_object);
+                }
+            }
+
             else Debug.Log("There is no object here");
         }
 
@@ -78,5 +88,10 @@ public class Player_Inventory : MonoBehaviour
         {
             _image.sprite = _default_gui_sprite;
         }
+    }
+
+    private void drop(Inventory_Object drop_object)
+    {
+        drop_object.restore(new Vector2(drop_point.transform.position.x, drop_point.transform.position.y));
     }
 }

@@ -5,12 +5,17 @@ using UnityEngine;
 public class Inventory_Object_Trigger : MonoBehaviour
 {
     private GameObject _current_collision_object = null;
+    private Door _current_door_in_front = null;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
         if(collision.gameObject.layer == 6)
         {
             _current_collision_object = collision.gameObject;
+        }
+
+        if(collision.gameObject.layer == 7 && collision.gameObject.GetComponent<Door>() != null)
+        {
+            _current_door_in_front = collision.gameObject.GetComponent<Door>();
         }
     }
 
@@ -23,6 +28,10 @@ public class Inventory_Object_Trigger : MonoBehaviour
                 _current_collision_object = null;
             }
         }
+        if (collision.gameObject.layer == 7 && collision.gameObject.GetComponent<Door>() != null)
+        {
+            _current_door_in_front = null;
+        }
     }
 
     public Inventory_Object GetInventory_Object()
@@ -32,5 +41,14 @@ public class Inventory_Object_Trigger : MonoBehaviour
             return null;
         }
         return _current_collision_object.GetComponent<Inventory_Object>();
+    }
+
+    public Door getDoor()
+    {
+        if(_current_door_in_front == null)
+        {
+            return null;
+        }
+        return _current_door_in_front;
     }
 }

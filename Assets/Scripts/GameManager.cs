@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     //References accessible by all
     public GameObject alice;
     public Shrinker shrinker;
+    public Inventory_Object_Trigger object_trigger;
 
 
     // Start is called before the first frame update

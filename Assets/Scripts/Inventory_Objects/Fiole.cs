@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Fiole : Inventory_Object
 {
+    private void Start()
+    {
+        offset = new Vector2(0, 0.15f);
+    }
     public override void use()
     {
         if (GameManager.Instance.shrinker.shrinkFactor > 0.5f)

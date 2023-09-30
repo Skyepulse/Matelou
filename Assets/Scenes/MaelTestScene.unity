@@ -741,7 +741,7 @@ GameObject:
   - component: {fileID: 1967632214558298024}
   - component: {fileID: 6143259456338244686}
   m_Layer: 8
-  m_Name: Square
+  m_Name: ObjectTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -780,6 +780,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alice: {fileID: 9017040784602575461}
   shrinker: {fileID: 7591275425924579044}
+  object_trigger: {fileID: 6143259456338244686}
 --- !u!212 &5062096019610091258
 SpriteRenderer:
   m_ObjectHideFlags: 0

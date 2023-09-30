@@ -52,7 +52,9 @@ public class PlayerMovement : MonoBehaviour {
         Vector2 pointA = colliderBounds.min;
         Vector2 pointB = pointA + new Vector2(colliderBounds.max.x - colliderBounds.min.x, -0.1f);
 
-        Collider2D[] colliders = Physics2D.OverlapAreaAll(pointA, pointB);
+		LayerMask mask = LayerMask.GetMask("Level");
+
+		Collider2D[] colliders = Physics2D.OverlapAreaAll(pointA, pointB, mask);
 
 
         _isGrounded = false;

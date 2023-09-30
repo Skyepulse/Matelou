@@ -4,15 +4,45 @@ using UnityEngine;
 
 public class Player_Inventory : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [HideInInspector]
+    private Inventory_Object _inventory_object = null;
+
+    [SerializeField]
+    private Inventory_Object_Trigger _trigger;
+    
+    //Add a new object to inventory and send a reference to the previous object in inventory
+    public Inventory_Object add_to_inventory(Inventory_Object o)
     {
+        o.getPicked();
+        if (_inventory_object == null)
+        {
+            _inventory_object = o;
+            return null;
+        }
+        
+        Inventory_Object last_object = _inventory_object;
+        _inventory_object = o;
+        return last_object;
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public Inventory_Object get_inventory_object()
     {
-        
+        return _inventory_object;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (_trigger.GetInventory_Object() != null) add_to_inventory(_trigger.GetInventory_Object());
+            else Debug.Log("There is no object here");
+        }
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            if (_inventory_object != null) Debug.Log("Current object: " + _inventory_object.get_name());
+            else Debug.Log("No object in inventory");
+        }
     }
 }

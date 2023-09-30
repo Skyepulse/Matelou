@@ -2,31 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Inventory_Object : MonoBehaviour
+public abstract class Inventory_Object : MonoBehaviour
 {
-    [HideInInspector]
+    [SerializeField]
     private Sprite object_sprite;
 
-    public Sprite get_sprite()
+    public virtual Sprite get_sprite()
     {
         return object_sprite;
     }
 
-    public string get_name()
+    public virtual string get_name()
     {
         return this.name;
     }
 
-    public void getPicked()
+    public virtual void getPicked()
     {
         GetComponent<SpriteRenderer>().enabled = false;
         GetComponent<BoxCollider2D>().enabled = false;
     }
 
-    public void restore(Vector2 pos)
+    public virtual void restore(Vector2 pos)
     {
         transform.position = pos;
         GetComponent<SpriteRenderer>().enabled = false;
         GetComponent<BoxCollider2D>().enabled = false;
     }
+
+    public abstract void use();
 }

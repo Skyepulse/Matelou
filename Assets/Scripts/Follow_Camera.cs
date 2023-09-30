@@ -37,7 +37,14 @@ public class Follow_Camera : MonoBehaviour
 
     public void set_camera_position(Vector2 pos)
     {
+        pos += _cam_offset;
         _transform.position = new Vector3(pos.x, pos.y, _transform.position.z);
+    }
+
+    //Change the z of the camera
+    public void set_camera_zoom(float z)
+    {
+        _transform.position = new Vector3(_transform.position.x, _transform.position.y, z);
     }
 
     //Smoothly move the camera to the new target's position

@@ -9,9 +9,9 @@ public class Shrinker : MonoBehaviour {
     public float shrinkFactor = 1.0f;
     public float shrinkSpeed = 1.0f;
 
-    public float smallshrink = 0.2f;
-    public float midshrink = 1f;
-    public float bigshrink = 1.5f;
+    public const float smallshrink = 0.2f;
+    public const float midshrink = 1f;
+    public const float bigshrink = 1.5f;
     //Shrink status == 1 small, == 2 mid, == 3 big
     public int shrinkstatus = 2;
 
@@ -30,7 +30,7 @@ public class Shrinker : MonoBehaviour {
     }
 
     void Update() {
-
+        if(Mathf.Abs(_currentShrink - shrinkFactor) < 0.09) updateShrinkFactor();
         _currentShrink += (shrinkFactor - _currentShrink) * shrinkSpeed * Time.deltaTime;
 
         if (mainCamera == null || player == null) return;
@@ -38,5 +38,21 @@ public class Shrinker : MonoBehaviour {
         player.transform.localScale = Vector3.Scale(_playerBaseSize, new Vector3(player.facingRight ? 1 : -1, 1, 1)) * _currentShrink;
         mainCamera.orthographicSize = _cameraBaseSize * _currentShrink;
 
+    }
+
+    private void updateShrinkFactor()
+    {
+        switch (shrinkFactor)
+        {
+            case smallshrink:
+                shrinkstatus = 1;
+                break;
+            case midshrink:
+                shrinkstatus = 2;
+                break;
+            case bigshrink:
+                shrinkstatus = 3;
+                break;
+        }
     }
 }

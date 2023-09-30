@@ -6,7 +6,7 @@ public class LittleBox : Inventory_Object
 {
     public override void use()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("<color=yellow>This little box should be correctly used :3 </color>");
     }
 
     // Start is called before the first frame update

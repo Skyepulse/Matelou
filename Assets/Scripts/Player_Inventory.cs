@@ -9,7 +9,7 @@ public class Player_Inventory : MonoBehaviour
 
     [SerializeField]
     private Inventory_Object_Trigger _trigger;
-    
+
     //Add a new object to inventory and send a reference to the previous object in inventory
     public Inventory_Object add_to_inventory(Inventory_Object o)
     {
@@ -19,11 +19,11 @@ public class Player_Inventory : MonoBehaviour
             _inventory_object = o;
             return null;
         }
-        
+
         Inventory_Object last_object = _inventory_object;
         _inventory_object = o;
         return last_object;
-        
+
     }
 
     public Inventory_Object get_inventory_object()
@@ -43,6 +43,19 @@ public class Player_Inventory : MonoBehaviour
         {
             if (_inventory_object != null) Debug.Log("Current object: " + _inventory_object.get_name());
             else Debug.Log("No object in inventory");
+        }
+
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            objectUse();
+        }
+    }
+
+    private void objectUse()
+    {
+        if(_inventory_object != null)
+        {
+            _inventory_object.use();
         }
     }
 }

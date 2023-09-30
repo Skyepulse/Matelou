@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour {
 	private Collider2D _mainCollider;
 
     private bool _isGrounded = false;
-    private bool _facingRight = true;
+    public bool facingRight = true;
     private float _velX = 0.0f;
 
 
@@ -32,12 +32,14 @@ public class PlayerMovement : MonoBehaviour {
 
     void Update() {
         _velX = Input.GetAxis("Horizontal");
-        if(Mathf.Abs(_velX) > 0.01f) {
-            if(_velX > 0) {
-                _facingRight = true;
+
+        if(Mathf.Abs(_velX) > 0.1f) {
+            if(_velX > 0 && !facingRight) {
+                facingRight = true;
                 _transform.localScale = new Vector3(Mathf.Abs(_transform.localScale.x), _transform.localScale.y, _transform.localScale.z);
-            } else {
-                _facingRight = false;
+            }
+            if(_velX < 0 && facingRight) {
+                facingRight = false;
                 _transform.localScale = new Vector3(-Mathf.Abs(_transform.localScale.x), _transform.localScale.y, _transform.localScale.z);
             }
         }

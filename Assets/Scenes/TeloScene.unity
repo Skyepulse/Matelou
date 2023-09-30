@@ -580,6 +580,10 @@ PrefabInstance:
       value: Alice_inventory
       objectReference: {fileID: 0}
     - target: {fileID: 1573416356944034329, guid: f63ecf1a4190c5e43af6480d57f2abe0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1573416356944034329, guid: f63ecf1a4190c5e43af6480d57f2abe0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.2932441
       objectReference: {fileID: 0}

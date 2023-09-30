@@ -6,9 +6,11 @@ public class Cookie_big : Inventory_Object
 {
     public override void use()
     {
-        if (GameManager.Instance.shrinker.shrinkFactor < 2)
+        Shrinker shrinker = GameManager.Instance.shrinker;
+        if (shrinker.shrinkFactor !=  shrinker.bigshrink)
         {
-            GameManager.Instance.shrinker.shrinkFactor *= 2;
+            if (shrinker.shrinkFactor == shrinker.smallshrink) shrinker.shrinkFactor = shrinker.midshrink;
+            else shrinker.shrinkFactor = shrinker.bigshrink;
             GameManager.Instance.shrinker.shrinkstatus +=1;
             Destroy(this.gameObject);
         } else

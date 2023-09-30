@@ -9,6 +9,9 @@ public class Shrinker : MonoBehaviour {
     public float shrinkFactor = 1.0f;
     public float shrinkSpeed = 1.0f;
 
+    public float smallshrink = 0.2f;
+    public float midshrink = 1f;
+    public float bigshrink = 1.5f;
     //Shrink status == 1 small, == 2 mid, == 3 big
     public int shrinkstatus = 2;
 

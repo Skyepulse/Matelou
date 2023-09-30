@@ -10,10 +10,12 @@ public class Fiole : Inventory_Object
     }
     public override void use()
     {
-        if (GameManager.Instance.shrinker.shrinkFactor > 0.5f)
+        Shrinker shrinker = GameManager.Instance.shrinker;
+        if (shrinker.shrinkFactor !=  shrinker.smallshrink)
         {
-            GameManager.Instance.shrinker.shrinkFactor /= 2;
-            GameManager.Instance.shrinker.shrinkstatus -= 1; 
+            if (shrinker.shrinkFactor == shrinker.bigshrink) shrinker.shrinkFactor = shrinker.midshrink;
+            else shrinker.shrinkFactor = shrinker.smallshrink;
+            GameManager.Instance.shrinker.shrinkstatus -=1;
             Destroy(this.gameObject);
         }
         else

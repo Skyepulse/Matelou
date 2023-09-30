@@ -9,7 +9,7 @@ public class Shrinker : MonoBehaviour {
     public float shrinkFactor = 1.0f;
     public float shrinkSpeed = 1.0f;
 
-    public const float smallshrink = 0.2f;
+    public const float smallshrink = 0.1f;
     public const float midshrink = 1f;
     public const float bigshrink = 1.5f;
     //Shrink status == 1 small, == 2 mid, == 3 big

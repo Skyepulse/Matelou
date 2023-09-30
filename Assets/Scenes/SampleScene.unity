@@ -420,6 +420,7 @@ MonoBehaviour:
   mainCamera: {fileID: 519420031}
   player: {fileID: 640061966}
   shrinkFactor: 1
+  shrinkSpeed: 1
 --- !u!1 &1050356571
 GameObject:
   m_ObjectHideFlags: 0

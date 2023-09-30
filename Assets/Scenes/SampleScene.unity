@@ -403,7 +403,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 640061962}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 98960438ea25c334198b146be7faa965, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -459,7 +459,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 00c7374f3e0036c49bdb9efc1ef625b6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -558,11 +558,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 640061962}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 007530cdf90ca654eb459d85db4ca665, type: 3}
+  m_Script: {fileID: 11500000, guid: c252e5c5ba135cd488a538fdba71bc00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _trigger: {fileID: 587680256}
-  _image: {fileID: 1942368748932778030}
+  mainCamera: {fileID: 519420031}
+  player: {fileID: 640061966}
+  shrinkFactor: 1
+  shrinkSpeed: 1
 --- !u!1 &1050356571
 GameObject:
   m_ObjectHideFlags: 0
@@ -574,7 +576,7 @@ GameObject:
   - component: {fileID: 1050356574}
   - component: {fileID: 1050356573}
   - component: {fileID: 1050356572}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -590,7 +592,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1050356571}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 98960438ea25c334198b146be7faa965, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

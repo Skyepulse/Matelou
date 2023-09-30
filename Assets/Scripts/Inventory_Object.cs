@@ -6,6 +6,15 @@ public abstract class Inventory_Object : MonoBehaviour
 {
     [SerializeField]
     private Sprite object_sprite;
+    protected Vector2 offset;
+
+    [Header("Size Pickup Options")]
+    [SerializeField]
+    private bool SmallPickup;
+    [SerializeField]
+    private bool MidPickup;
+    [SerializeField]
+    private bool BigPickup;
 
     public virtual Sprite get_sprite()
     {
@@ -25,10 +34,15 @@ public abstract class Inventory_Object : MonoBehaviour
 
     public virtual void restore(Vector2 pos)
     {
-        transform.position = pos;
-        GetComponent<SpriteRenderer>().enabled = false;
-        GetComponent<BoxCollider2D>().enabled = false;
+        transform.position = pos + offset;
+        GetComponent<SpriteRenderer>().enabled = true;
+        GetComponent<BoxCollider2D>().enabled = true;
     }
 
     public abstract void use();
+
+    public bool[] getPickupOptions()
+    {
+        return new bool[3] { SmallPickup, MidPickup, BigPickup};
+    }
 }

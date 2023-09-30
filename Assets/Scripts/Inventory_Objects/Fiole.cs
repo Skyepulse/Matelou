@@ -2,17 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fiole : MonoBehaviour
+public class Fiole : Inventory_Object
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void use()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        GameManager.Instance.shrinker.shrinkFactor /= 2;
+        Destroy(this.gameObject);
     }
 }
+

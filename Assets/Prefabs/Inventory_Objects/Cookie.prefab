@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4719626343578981819}
   - component: {fileID: 3769303900603103982}
   - component: {fileID: 8605769985441587567}
-  - component: {fileID: 1655235270034517454}
+  - component: {fileID: -1232890397492906601}
   m_Layer: 6
   m_Name: Cookie
   m_TagString: Untagged
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d2950826cfe65fe4c852fee848c74a87, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,8 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2299a3acd6a1a124a8cbe01bc82a68ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  object_sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
---- !u!61 &1655235270034517454
+  object_sprite: {fileID: 21300000, guid: d2950826cfe65fe4c852fee848c74a87, type: 3}
+--- !u!61 &-1232890397492906601
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -135,12 +135,12 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.3225, y: 0.3225}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.3225, y: 0.3225}
   m_EdgeRadius: 0

@@ -14,7 +14,11 @@ public class Player_Inventory : MonoBehaviour
     private GameObject drop_point;
     [SerializeField]
     private Image _image;
+
+
     private Sprite _default_gui_sprite;
+
+    
 
     private void Start()
     {
@@ -49,7 +53,9 @@ public class Player_Inventory : MonoBehaviour
         {
             if (_trigger.GetInventory_Object() != null)
             {
-                Inventory_Object to_drop_object = add_to_inventory(_trigger.GetInventory_Object());
+                Inventory_Object to_drop_object = null;
+                //Verify if alice can pick the object
+                if (_trigger.GetInventory_Object().getPickupOptions()[GameManager.Instance.shrinker.shrinkstatus - 1])to_drop_object = add_to_inventory(_trigger.GetInventory_Object());
                 if (to_drop_object != null)
                 {
                     drop(to_drop_object);

@@ -8,6 +8,14 @@ public abstract class Inventory_Object : MonoBehaviour
     private Sprite object_sprite;
     protected Vector2 offset;
 
+    [Header("Size Pickup Options")]
+    [SerializeField]
+    private bool SmallPickup;
+    [SerializeField]
+    private bool MidPickup;
+    [SerializeField]
+    private bool BigPickup;
+
     public virtual Sprite get_sprite()
     {
         return object_sprite;
@@ -32,4 +40,9 @@ public abstract class Inventory_Object : MonoBehaviour
     }
 
     public abstract void use();
+
+    public bool[] getPickupOptions()
+    {
+        return new bool[3] { SmallPickup, MidPickup, BigPickup};
+    }
 }

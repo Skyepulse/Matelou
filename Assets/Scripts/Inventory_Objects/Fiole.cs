@@ -13,6 +13,7 @@ public class Fiole : Inventory_Object
         if (GameManager.Instance.shrinker.shrinkFactor > 0.5f)
         {
             GameManager.Instance.shrinker.shrinkFactor /= 2;
+            GameManager.Instance.shrinker.shrinkstatus -= 1; 
             Destroy(this.gameObject);
         }
         else

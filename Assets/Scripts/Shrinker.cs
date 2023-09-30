@@ -32,7 +32,7 @@ public class Shrinker : MonoBehaviour {
 
         if (mainCamera == null || player == null) return;
 
-        player.transform.localScale = _playerBaseSize * _currentShrink;
+        player.transform.localScale = Vector3.Scale(_playerBaseSize, new Vector3(player.facingRight ? 1 : -1, 1, 1)) * _currentShrink;
         mainCamera.orthographicSize = _cameraBaseSize * _currentShrink;
 
     }

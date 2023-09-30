@@ -24,6 +24,10 @@ public class PlayerMovement : MonoBehaviour {
         t = transform;
         rb2D = GetComponent<Rigidbody2D>();
         mainCollider = GetComponent<Collider2D>();
+
+        rb2D.freezeRotation = true;
+        rb2D.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+        rb2D.gravityScale = gravityScale;
     }
 
     void Update() {
@@ -39,15 +43,15 @@ public class PlayerMovement : MonoBehaviour {
         Vector2 pointA = colliderBounds.min;
         Vector2 pointB = pointA + new Vector2(colliderBounds.max.x - colliderBounds.min.x, -0.1f);
 
-        Collider2D[] colliders = Physics2D.OverlapAreaAll(pointA, pointB, 7);
+        Collider2D[] colliders = Physics2D.OverlapAreaAll(pointA, pointB);
 
 
         isGrounded = false;
 
-		for (int i = 0; i < colliders.Length; i++) {
-			if (colliders[i] != mainCollider) {
+        foreach(Collider2D col in colliders) {
+			if (col != mainCollider) {
 				isGrounded = true;
-				break;
+				//break;
 			}
 		}
 

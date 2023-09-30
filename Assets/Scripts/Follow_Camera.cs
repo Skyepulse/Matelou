@@ -23,7 +23,7 @@ public class Follow_Camera : MonoBehaviour
         _cam_offset = new Vector2(_transform.position.x, transform.position.y);
     }
 
-    private void LateUpdate()
+    private void FixedUpdate()
     {
         if(_camera_target == null)
         {

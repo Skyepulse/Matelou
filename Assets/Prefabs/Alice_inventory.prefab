@@ -209,6 +209,7 @@ MonoBehaviour:
   maxSpeed: 5
   jumpHeight: 10
   gravityScale: 1.5
+  facingRight: 1
 --- !u!114 &292666701070056674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,7 +254,7 @@ GameObject:
   - component: {fileID: 2833400208951244205}
   - component: {fileID: 8509565811275566510}
   - component: {fileID: 4041804720797840968}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: ObjectTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}

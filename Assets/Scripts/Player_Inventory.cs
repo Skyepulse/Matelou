@@ -75,6 +75,15 @@ public class Player_Inventory : MonoBehaviour
         {
             objectUse();
         }
+
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            if(_inventory_object != null)
+            {
+                drop(_inventory_object);
+                _inventory_object = null;
+            }
+        }
     }
 
     private void objectUse()

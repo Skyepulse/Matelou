@@ -11,24 +11,32 @@ public class PlayerMovement : MonoBehaviour {
 
     public float maxSpeed = 5.0f;
     public float gravityScale = 1.5f;
-	//public float jumpScale = 1.0f;
 
-	[Header("Jump parameters")]
+    [Header("Jump parameters")]
 
-	public float jumpFactorMax = 0.2f;
-	public float jumpFactorMin = 1.5f;
+    public float absoluteJumpMin;
+	public float absoluteJumpMid;
+	public float absoluteJumpMax;
 
-    [Header("Speed parameters")]
+	[Header("Speed parameters")]
 
-    public float minSpeedMult = 1;
-	public float maxSpeedMult = 10;
+    public float minSpeedMult = 3;
+	public float maxSpeedMult = 1;
 
-	private Transform _transform;
+    [Header("Umbrella")]
+
+    public GameObject umbrella;
+    public float umbrellaAlpha;
+    public bool _hasUmbrella = false;
+
+    public float triggerTreshold = 1;
+
+    private Transform _transform;
 	private Rigidbody2D _rb2D;
 	private Collider2D _mainCollider;
 
     private bool _isGrounded = false;
-    public bool facingRight = true;
+    [HideInInspector] public bool facingRight = true;
     private float _velX = 0.0f;
     private bool can_move = true;
 
@@ -58,14 +66,26 @@ public class PlayerMovement : MonoBehaviour {
         }
 
         if(_isGrounded && Input.GetButtonDown("Jump")) {
-            float playerHeight = _mainCollider.bounds.size.y;
+			float shrink = GameManager.Instance.shrinker.getCurrentShrink();
+			float desiredHeight = 0;
 
-            float jumpScale = _map(GameManager.Instance.shrinker.getCurrentShrink(), Shrinker.smallshrink, Shrinker.bigshrink, jumpFactorMin, jumpFactorMax);
+            if (shrink < Shrinker.smallshrink) desiredHeight = absoluteJumpMin;
+            else if (shrink < Shrinker.midshrink) desiredHeight = _map(shrink, Shrinker.smallshrink, Shrinker.midshrink, absoluteJumpMin, absoluteJumpMid);
+            else if (shrink < Shrinker.bigshrink) desiredHeight = _map(shrink, Shrinker.midshrink, Shrinker.bigshrink, absoluteJumpMid, absoluteJumpMax);
+            else desiredHeight = absoluteJumpMax;
 
-            float jumpHeight = Mathf.Sqrt(2 * _rb2D.gravityScale * Mathf.Abs(Physics2D.gravity.y) * jumpScale * playerHeight);
+            float jumpHeight = Mathf.Sqrt(2 * _rb2D.gravityScale * Mathf.Abs(Physics2D.gravity.y) * desiredHeight);
 
             _rb2D.velocity = new Vector2(_rb2D.velocity.x, jumpHeight);
         }
+
+        if(!_hasUmbrella) {
+            if(_rb2D.velocity.y < -triggerTreshold) {
+                _hasUmbrella = true;
+            }
+        }
+
+        umbrella.SetActive(_hasUmbrella);
     }
 
 	private void FixedUpdate() {
@@ -87,6 +107,7 @@ public class PlayerMovement : MonoBehaviour {
         foreach(Collider2D col in colliders) {
 			if (col != _mainCollider) {
 				_isGrounded = true;
+                _hasUmbrella = false;
 				//break;
 			}
 		}
@@ -97,10 +118,7 @@ public class PlayerMovement : MonoBehaviour {
 
 		float speed = _mainCollider.bounds.size.x / 0.8f * maxSpeed * runScale;
 
-		_rb2D.velocity = new Vector2(_velX * speed, _rb2D.velocity.y);
-
-
-        Debug.DrawLine(pointA, pointB, Color.green);
+		_rb2D.velocity = new Vector2(_velX * speed, _rb2D.velocity.y - (_hasUmbrella && _rb2D.velocity.y < 0 ? _rb2D.velocity.y * Time.deltaTime * umbrellaAlpha : 0));
 	}
 
 	private float _map(float value, float istart, float istop, float ostart, float ostop) {

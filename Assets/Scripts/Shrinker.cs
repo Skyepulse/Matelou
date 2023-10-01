@@ -12,7 +12,7 @@ public class Shrinker : MonoBehaviour {
 
     public const float smallshrink = 0.1f;
     public const float midshrink = 1f;
-    public const float bigshrink = 2.5f;
+    public const float bigshrink = 2.0f;
     //Shrink status == 1 small, == 2 mid, == 3 big
     public int shrinkstatus = 2;
 

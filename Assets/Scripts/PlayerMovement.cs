@@ -23,12 +23,20 @@ public class PlayerMovement : MonoBehaviour {
     public float minSpeedMult = 1;
 	public float maxSpeedMult = 10;
 
-	private Transform _transform;
+    [Header("Umbrella")]
+
+    public GameObject umbrella;
+    public float umbrellaAlpha;
+    public bool _hasUmbrella = false;
+
+    public float triggerTreshold = 1;
+
+    private Transform _transform;
 	private Rigidbody2D _rb2D;
 	private Collider2D _mainCollider;
 
     private bool _isGrounded = false;
-    public bool facingRight = true;
+    [HideInInspector] public bool facingRight = true;
     private float _velX = 0.0f;
     private bool can_move = true;
 
@@ -66,6 +74,14 @@ public class PlayerMovement : MonoBehaviour {
 
             _rb2D.velocity = new Vector2(_rb2D.velocity.x, jumpHeight);
         }
+
+        if(!_hasUmbrella) {
+            if(_rb2D.velocity.y < -triggerTreshold) {
+                _hasUmbrella = true;
+            }
+        }
+
+        umbrella.SetActive(_hasUmbrella);
     }
 
 	private void FixedUpdate() {
@@ -87,6 +103,7 @@ public class PlayerMovement : MonoBehaviour {
         foreach(Collider2D col in colliders) {
 			if (col != _mainCollider) {
 				_isGrounded = true;
+                _hasUmbrella = false;
 				//break;
 			}
 		}
@@ -97,10 +114,7 @@ public class PlayerMovement : MonoBehaviour {
 
 		float speed = _mainCollider.bounds.size.x / 0.8f * maxSpeed * runScale;
 
-		_rb2D.velocity = new Vector2(_velX * speed, _rb2D.velocity.y);
-
-
-        Debug.DrawLine(pointA, pointB, Color.green);
+		_rb2D.velocity = new Vector2(_velX * speed, _rb2D.velocity.y - (_hasUmbrella && _rb2D.velocity.y < 0 ? _rb2D.velocity.y * Time.deltaTime * umbrellaAlpha : 0));
 	}
 
 	private float _map(float value, float istart, float istop, float ostart, float ostop) {

@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     public GameObject alice;
     public Shrinker shrinker;
     public Inventory_Object_Trigger object_trigger;
+    public Canvas maincanvas;
 
 
     // Start is called before the first frame update

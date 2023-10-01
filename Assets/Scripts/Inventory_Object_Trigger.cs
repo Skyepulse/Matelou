@@ -11,6 +11,7 @@ public class Inventory_Object_Trigger : MonoBehaviour
         if(collision.gameObject.layer == 6)
         {
             _current_collision_object = collision.gameObject;
+            collision.GetComponent<Inventory_Object>().setE();
         }
 
         if(collision.gameObject.layer == 7 && collision.gameObject.GetComponent<Door>() != null)
@@ -26,6 +27,7 @@ public class Inventory_Object_Trigger : MonoBehaviour
             if(_current_collision_object == collision.gameObject)
             {
                 _current_collision_object = null;
+                collision.GetComponent<Inventory_Object>().eraseE();
             }
         }
         if (collision.gameObject.layer == 7 && collision.gameObject.GetComponent<Door>() != null)

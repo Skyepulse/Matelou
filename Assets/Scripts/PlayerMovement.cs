@@ -19,6 +19,9 @@ public class PlayerMovement : MonoBehaviour {
     public bool facingRight = true;
     private float _velX = 0.0f;
 
+    private bool can_move = true;
+    private bool can_fall = true;
+
 
     void Start() {
         _transform = transform;
@@ -76,4 +79,10 @@ public class PlayerMovement : MonoBehaviour {
 
         Debug.DrawLine(pointA, pointB, Color.green);
 	}
+
+    private void _setMovementsOff()
+    {
+        can_fall = false;
+        can_move = false;
+    }
 }

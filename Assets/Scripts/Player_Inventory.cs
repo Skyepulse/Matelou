@@ -51,11 +51,11 @@ public class Player_Inventory : MonoBehaviour
         update_gui();
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (_trigger.GetInventory_Object() != null)
+            if (_trigger.GetInventory_Object() != null && GameManager.Instance.shrinker.canPickUpObjects)
             {
                 Inventory_Object to_drop_object = null;
                 //Verify if alice can pick the object
-                if (_trigger.GetInventory_Object().getPickupOptions()[GameManager.Instance.shrinker.shrinkstatus - 1])to_drop_object = add_to_inventory(_trigger.GetInventory_Object());
+                if (_trigger.GetInventory_Object().getPickupOptions()[GameManager.Instance.shrinker.shrinkstatus - 1]) to_drop_object = add_to_inventory(_trigger.GetInventory_Object());
                 if (to_drop_object != null)
                 {
                     drop(to_drop_object);

@@ -9,19 +9,18 @@ using UnityEngine.UIElements;
 public class PlayerMovement : MonoBehaviour {
 
     public float maxSpeed = 5.0f;
-    public float jumpScale = 1.0f;
     public float gravityScale = 1.5f;
-
-	[Header("Shrink parameters")]
-
-	public float shrinkMax = 2;
-	public float shrinkMedium = 1;
-	public float shrinkMid = 0.1f;
+	//public float jumpScale = 1.0f;
 
 	[Header("Jump parameters")]
 
 	public float jumpFactorMax = 0.2f;
 	public float jumpFactorMin = 1.5f;
+
+    [Header("Speed parameters")]
+
+    public float minSpeedMult = 1;
+	public float maxSpeedMult = 10;
 
 	private Transform _transform;
 	private Rigidbody2D _rb2D;
@@ -60,7 +59,9 @@ public class PlayerMovement : MonoBehaviour {
 
         if(_isGrounded && Input.GetKey(KeyCode.Space)) {
             float playerHeight = _mainCollider.bounds.size.y;
-            Debug.Log(playerHeight);
+
+            float jumpScale = _map(GameManager.Instance.shrinker.getCurrentShrink(), Shrinker.smallshrink, Shrinker.bigshrink, jumpFactorMin, jumpFactorMax);
+
             float jumpHeight = Mathf.Sqrt(2 * _rb2D.gravityScale * Mathf.Abs(Physics2D.gravity.y) * jumpScale * playerHeight);
 
             _rb2D.velocity = new Vector2(_rb2D.velocity.x, jumpHeight);
@@ -89,15 +90,25 @@ public class PlayerMovement : MonoBehaviour {
 				//break;
 			}
 		}
+        float shrink = GameManager.Instance.shrinker.getCurrentShrink();
+        float runScale = 1;
+        if(shrink < Shrinker.midshrink)
+    		runScale = _map(shrink, Shrinker.smallshrink, Shrinker.midshrink, minSpeedMult, maxSpeedMult);
 
-		_rb2D.velocity = new Vector2(_velX * maxSpeed, _rb2D.velocity.y);
+		float speed = _mainCollider.bounds.size.x / 0.8f * maxSpeed * runScale;
+
+		_rb2D.velocity = new Vector2(_velX * speed, _rb2D.velocity.y);
+
 
         Debug.DrawLine(pointA, pointB, Color.green);
 	}
 
-    private void _setMovementsOff()
-    {
+    private void _setMovementsOff() {
         can_fall = false;
         can_move = false;
     }
+
+	private float _map(float value, float istart, float istop, float ostart, float ostop) {
+		return ostart + (ostop - ostart) * ((value - istart) / (istop - istart));
+	}
 }

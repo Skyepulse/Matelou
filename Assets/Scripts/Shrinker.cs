@@ -12,7 +12,7 @@ public class Shrinker : MonoBehaviour {
 
     public const float smallshrink = 0.1f;
     public const float midshrink = 1f;
-    public const float bigshrink = 1.5f;
+    public const float bigshrink = 2.5f;
     //Shrink status == 1 small, == 2 mid, == 3 big
     public int shrinkstatus = 2;
 
@@ -72,5 +72,9 @@ public class Shrinker : MonoBehaviour {
     {
         if (Mathf.Abs(_currentShrink - shrinkFactor) >=0.09) return true;
         return false;
+    }
+
+    public float getCurrentShrink() {
+        return _currentShrink;
     }
 }

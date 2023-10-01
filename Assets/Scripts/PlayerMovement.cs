@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -20,7 +21,6 @@ public class PlayerMovement : MonoBehaviour {
     private float _velX = 0.0f;
 
     private bool can_move = true;
-    private bool can_fall = true;
 
 
     void Start() {
@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     void Update() {
-        _velX = Input.GetAxis("Horizontal");
+        if(can_move) _velX = Input.GetAxis("Horizontal");
 
         if(Mathf.Abs(_velX) > 0.1f) {
             if(_velX > 0 && !facingRight) {
@@ -80,9 +80,26 @@ public class PlayerMovement : MonoBehaviour {
         Debug.DrawLine(pointA, pointB, Color.green);
 	}
 
-    private void _setMovementsOff()
+    public void setMovementsOff()
     {
-        can_fall = false;
-        can_move = false;
+        SetMovement(false);
+        SetGravity(false);
+    }
+    public void SetMovement(bool enableMovement)
+    {
+        can_move = enableMovement;
+    }
+
+    public void SetGravity(bool enableGravity)
+    {
+        if(!enableGravity) GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+        else GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+        
+    }
+    
+    public void setMovementOn()
+    {
+        SetMovement(true);
+        SetGravity(true);
     }
 }

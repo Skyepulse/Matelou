@@ -46,15 +46,35 @@ public class Object_Sizing : MonoBehaviour
     {
         foreach (Collider2D col in _smallCollision)
         {
-            col.enabled = blist[0];
+            col.enabled = false;
         }
         foreach (Collider2D col in _midCollision)
         {
-            col.enabled = blist[1];
+            col.enabled = false;
         }
         foreach (Collider2D col in _bigCollision)
         {
-            col.enabled = blist[2];
+            col.enabled = false;
+        }
+
+        if (blist[0])
+        {
+            foreach (Collider2D col in _smallCollision)
+            {
+                col.enabled = true;
+            }
+        } else if (blist[1])
+        {
+            foreach (Collider2D col in _midCollision)
+            {
+                col.enabled = true;
+            }
+        } else if (blist[2])
+        {
+            foreach (Collider2D col in _bigCollision)
+            {
+                col.enabled = true;
+            }
         }
     }
 }

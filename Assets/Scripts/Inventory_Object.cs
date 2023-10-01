@@ -7,6 +7,10 @@ public abstract class Inventory_Object : MonoBehaviour
     [SerializeField]
     private Sprite object_sprite;
     protected Vector2 offset;
+    [SerializeField]
+    protected bool _shouldTellUse;
+    [SerializeField]
+    protected SpriteRenderer _otherSprite_renderer;
 
     [Header("Size Pickup Options")]
     [SerializeField]
@@ -15,6 +19,7 @@ public abstract class Inventory_Object : MonoBehaviour
     private bool MidPickup;
     [SerializeField]
     private bool BigPickup;
+    
 
     public virtual Sprite get_sprite()
     {
@@ -30,6 +35,11 @@ public abstract class Inventory_Object : MonoBehaviour
     {
         GetComponent<SpriteRenderer>().enabled = false;
         GetComponent<BoxCollider2D>().enabled = false;
+        if (_shouldTellUse)
+        {
+            GameManager.Instance.maincanvas.transform.GetChild(1).gameObject.SetActive(true);
+
+        } 
     }
 
     public virtual void restore(Vector2 pos)
@@ -44,5 +54,15 @@ public abstract class Inventory_Object : MonoBehaviour
     public bool[] getPickupOptions()
     {
         return new bool[3] { SmallPickup, MidPickup, BigPickup};
+    }
+
+    public void setE()
+    {
+        _otherSprite_renderer.enabled = true;
+    }
+
+    public void eraseE()
+    {
+        _otherSprite_renderer.enabled = false;
     }
 }

@@ -15,6 +15,11 @@ public class Fiole : Inventory_Object
         {
             if (shrinker.shrinkFactor == Shrinker.bigshrink) shrinker.shrinkFactor = Shrinker.midshrink;
             else shrinker.shrinkFactor = Shrinker.smallshrink;
+            if (_shouldTellUse)
+            {
+                _shouldTellUse = false;
+                GameManager.Instance.maincanvas.transform.GetChild(1).gameObject.SetActive(false);
+            }
             Destroy(this.gameObject);
         }
         else

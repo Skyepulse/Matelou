@@ -207,8 +207,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 5
-  jumpHeight: 6.5
   gravityScale: 1.5
+  jumpFactorMax: 0.2
+  jumpFactorMin: 1.2
+  minSpeedMult: 3
+  maxSpeedMult: 1
   facingRight: 1
 --- !u!114 &292666701070056674
 MonoBehaviour:

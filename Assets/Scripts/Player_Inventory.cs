@@ -49,7 +49,7 @@ public class Player_Inventory : MonoBehaviour
     private void Update()
     {
         update_gui();
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetButtonDown("Interact"))
         {
             if (_trigger.GetInventory_Object() != null && GameManager.Instance.shrinker.canPickUpObjects)
             {
@@ -65,18 +65,20 @@ public class Player_Inventory : MonoBehaviour
             else Debug.Log("There is no object here");
         }
 
+
+        /* DEBUG PURPOSE ONLY
         if (Input.GetKeyDown(KeyCode.S))
         {
             if (_inventory_object != null) Debug.Log("Current object: " + _inventory_object.get_name());
             else Debug.Log("No object in inventory");
-        }
+        }*/
 
-        if (Input.GetKeyDown(KeyCode.U))
+        if (Input.GetButtonDown("Use"))
         {
             objectUse();
         }
 
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetButtonDown("Drop"))
         {
             if(_inventory_object != null)
             {

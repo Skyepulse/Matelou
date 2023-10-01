@@ -57,7 +57,7 @@ public class PlayerMovement : MonoBehaviour {
             }
         }
 
-        if(_isGrounded && Input.GetKey(KeyCode.Space)) {
+        if(_isGrounded && Input.GetButtonDown("Jump")) {
             float playerHeight = _mainCollider.bounds.size.y;
 
             float jumpScale = _map(GameManager.Instance.shrinker.getCurrentShrink(), Shrinker.smallshrink, Shrinker.bigshrink, jumpFactorMin, jumpFactorMax);

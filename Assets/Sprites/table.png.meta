@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -121,7 +121,154 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: table_left
+      rect:
+        serializedVersion: 2
+        x: 379
+        y: 171
+        width: 1093
+        height: 3972
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 11, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6ae89a7de5e05e42a59f671bbfc4bed
+      internalID: -1642353949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: table_droite
+      rect:
+        serializedVersion: 2
+        x: 2805
+        y: 2501
+        width: 1574
+        height: 1656
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 2, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93e108ccb40e59349ae8abf31e348199
+      internalID: 807063954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: table_mid
+      rect:
+        serializedVersion: 2
+        x: 1477
+        y: 185
+        width: 1328
+        height: 3972
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb052e4735596194d8b3a9f3be1408bb
+      internalID: -719672042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patte Gauche
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 100
+        width: 752
+        height: 2355
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09a9d32063414dc40ab9f5b50d7e7e54
+      internalID: -1663133722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patte Droite
+      rect:
+        serializedVersion: 2
+        x: 3613
+        y: 115
+        width: 724
+        height: 2397
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21012f10a3315d047b8c06b6361fb4dc
+      internalID: 991155992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patte arr Gauche
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 123
+        width: 372
+        height: 4034
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f07111252b01724d9f66248fb666130
+      internalID: -936056354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patte arr Droite
+      rect:
+        serializedVersion: 2
+        x: 3133
+        y: 130
+        width: 430
+        height: 2385
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8369a91dd5ea40d4fb569d99d3a9e052
+      internalID: 1349963995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +279,14 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Patte Droite: 991155992
+      Patte Gauche: -1663133722
+      Patte arr Droite: 1349963995
+      Patte arr Gauche: -936056354
+      table_droite: 807063954
+      table_left: -1642353949
+      table_mid: -719672042
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

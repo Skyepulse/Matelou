@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -8,16 +9,29 @@ using UnityEngine.UIElements;
 public class PlayerMovement : MonoBehaviour {
 
     public float maxSpeed = 5.0f;
-    public float jumpHeight = 10.0f;
+    public float jumpScale = 1.0f;
     public float gravityScale = 1.5f;
 
-    private Transform _transform;
+	[Header("Shrink parameters")]
+
+	public float shrinkMax = 2;
+	public float shrinkMedium = 1;
+	public float shrinkMid = 0.1f;
+
+	[Header("Jump parameters")]
+
+	public float jumpFactorMax = 0.2f;
+	public float jumpFactorMin = 1.5f;
+
+	private Transform _transform;
 	private Rigidbody2D _rb2D;
 	private Collider2D _mainCollider;
 
     private bool _isGrounded = false;
     public bool facingRight = true;
     private float _velX = 0.0f;
+    private bool can_move = true;
+    private bool can_fall = true;
 
 
     void Start() {
@@ -45,6 +59,10 @@ public class PlayerMovement : MonoBehaviour {
         }
 
         if(_isGrounded && Input.GetKey(KeyCode.Space)) {
+            float playerHeight = _mainCollider.bounds.size.y;
+            Debug.Log(playerHeight);
+            float jumpHeight = Mathf.Sqrt(2 * _rb2D.gravityScale * Mathf.Abs(Physics2D.gravity.y) * jumpScale * playerHeight);
+
             _rb2D.velocity = new Vector2(_rb2D.velocity.x, jumpHeight);
         }
     }
@@ -76,4 +94,10 @@ public class PlayerMovement : MonoBehaviour {
 
         Debug.DrawLine(pointA, pointB, Color.green);
 	}
+
+    private void _setMovementsOff()
+    {
+        can_fall = false;
+        can_move = false;
+    }
 }

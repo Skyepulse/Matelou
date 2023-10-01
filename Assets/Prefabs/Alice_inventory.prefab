@@ -207,7 +207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 5
-  jumpHeight: 10
+  jumpHeight: 6.5
   gravityScale: 1.5
   facingRight: 1
 --- !u!114 &292666701070056674
@@ -226,6 +226,7 @@ MonoBehaviour:
   player: {fileID: 89349783366902242}
   shrinkFactor: 1
   shrinkSpeed: 1
+  canPickUpObjects: 1
   shrinkstatus: 2
 --- !u!114 &609010461110983572
 MonoBehaviour:

@@ -8,6 +8,7 @@ public class Shrinker : MonoBehaviour {
     public PlayerMovement player;
     public float shrinkFactor = 1.0f;
     public float shrinkSpeed = 1.0f;
+    public bool canPickUpObjects = true;
 
     public const float smallshrink = 0.1f;
     public const float midshrink = 1f;
@@ -30,7 +31,18 @@ public class Shrinker : MonoBehaviour {
     }
 
     void Update() {
-        if(Mathf.Abs(_currentShrink - shrinkFactor) < 0.09) updateShrinkFactor();
+        //We check if we are currently shrinking:
+        if (_isCurrentlyShrinking())
+        {
+            canPickUpObjects = false;
+        } else
+        {
+            //We have to update the shrink factor first
+            updateShrinkFactor();
+            canPickUpObjects = true;
+        }
+
+
         _currentShrink += (shrinkFactor - _currentShrink) * shrinkSpeed * Time.deltaTime;
 
         if (mainCamera == null || player == null) return;
@@ -54,5 +66,11 @@ public class Shrinker : MonoBehaviour {
                 shrinkstatus = 3;
                 break;
         }
+    }
+
+    private bool _isCurrentlyShrinking()
+    {
+        if (Mathf.Abs(_currentShrink - shrinkFactor) >=0.09) return true;
+        return false;
     }
 }

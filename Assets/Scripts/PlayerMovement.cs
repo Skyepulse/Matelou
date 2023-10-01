@@ -103,11 +103,6 @@ public class PlayerMovement : MonoBehaviour {
         Debug.DrawLine(pointA, pointB, Color.green);
 	}
 
-    private void _setMovementsOff() {
-        can_fall = false;
-        can_move = false;
-    }
-
 	private float _map(float value, float istart, float istop, float ostart, float ostop) {
 		return ostart + (ostop - ostart) * ((value - istart) / (istop - istart));
 	}
@@ -124,7 +119,7 @@ public class PlayerMovement : MonoBehaviour {
     public void SetGravity(bool enableGravity)
     {
         if(!enableGravity) GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
-        else GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+        else GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
         
     }
     

@@ -53,6 +53,10 @@ public class PlayerMovement : MonoBehaviour {
         Bounds colliderBounds = _mainCollider.bounds;
         Vector2 pointA = colliderBounds.min;
         Vector2 pointB = pointA + new Vector2(colliderBounds.max.x - colliderBounds.min.x, -0.1f);
+        float diffX = (pointB.x - pointA.x) * 0.1f;
+
+        pointA.x += diffX;
+        pointB.x -= diffX;
 
 		LayerMask mask = LayerMask.GetMask("Level");
 
@@ -69,5 +73,7 @@ public class PlayerMovement : MonoBehaviour {
 		}
 
 		_rb2D.velocity = new Vector2(_velX * maxSpeed, _rb2D.velocity.y);
+
+        Debug.DrawLine(pointA, pointB, Color.green);
 	}
 }

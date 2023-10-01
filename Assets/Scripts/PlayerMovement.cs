@@ -11,17 +11,17 @@ public class PlayerMovement : MonoBehaviour {
 
     public float maxSpeed = 5.0f;
     public float gravityScale = 1.5f;
-	//public float jumpScale = 1.0f;
 
-	[Header("Jump parameters")]
+    [Header("Jump parameters")]
 
-	public float jumpFactorMax = 0.2f;
-	public float jumpFactorMin = 1.5f;
+    public float absoluteJumpMin;
+	public float absoluteJumpMid;
+	public float absoluteJumpMax;
 
-    [Header("Speed parameters")]
+	[Header("Speed parameters")]
 
-    public float minSpeedMult = 1;
-	public float maxSpeedMult = 10;
+    public float minSpeedMult = 3;
+	public float maxSpeedMult = 1;
 
     [Header("Umbrella")]
 
@@ -66,11 +66,15 @@ public class PlayerMovement : MonoBehaviour {
         }
 
         if(_isGrounded && Input.GetButtonDown("Jump")) {
-            float playerHeight = _mainCollider.bounds.size.y;
+			float shrink = GameManager.Instance.shrinker.getCurrentShrink();
+			float desiredHeight = 0;
 
-            float jumpScale = _map(GameManager.Instance.shrinker.getCurrentShrink(), Shrinker.smallshrink, Shrinker.bigshrink, jumpFactorMin, jumpFactorMax);
+            if (shrink < Shrinker.smallshrink) desiredHeight = absoluteJumpMin;
+            else if (shrink < Shrinker.midshrink) desiredHeight = _map(shrink, Shrinker.smallshrink, Shrinker.midshrink, absoluteJumpMin, absoluteJumpMid);
+            else if (shrink < Shrinker.bigshrink) desiredHeight = _map(shrink, Shrinker.midshrink, Shrinker.bigshrink, absoluteJumpMid, absoluteJumpMax);
+            else desiredHeight = absoluteJumpMax;
 
-            float jumpHeight = Mathf.Sqrt(2 * _rb2D.gravityScale * Mathf.Abs(Physics2D.gravity.y) * jumpScale * playerHeight);
+            float jumpHeight = Mathf.Sqrt(2 * _rb2D.gravityScale * Mathf.Abs(Physics2D.gravity.y) * desiredHeight);
 
             _rb2D.velocity = new Vector2(_rb2D.velocity.x, jumpHeight);
         }

@@ -157,8 +157,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 5
   gravityScale: 1.5
-  jumpFactorMax: 0.2
-  jumpFactorMin: 1.8
+  absoluteJumpMin: 0.3
+  absoluteJumpMid: 1
+  absoluteJumpMax: 2
   minSpeedMult: 3
   maxSpeedMult: 1
   umbrella: {fileID: 7024381735401835402}

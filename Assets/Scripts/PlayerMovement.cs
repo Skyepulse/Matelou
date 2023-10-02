@@ -21,12 +21,13 @@ public class PlayerMovement : MonoBehaviour {
     [Header("Umbrella")]
 
     public GameObject umbrella;
-    public float umbrellaAlpha;
     public bool _hasUmbrella = false;
 
     public float triggerTreshold = 1;
 
-    private Transform _transform;
+    public float umbrellaAlpha;
+
+	private Transform _transform;
 	private Rigidbody2D _rb2D;
 	private Collider2D _mainCollider;
 
@@ -75,7 +76,7 @@ public class PlayerMovement : MonoBehaviour {
         }
 
         if(!_hasUmbrella) {
-            if(_rb2D.velocity.y < -triggerTreshold) {
+            if(_rb2D.velocity.y < -triggerTreshold && GameManager.Instance.shrinker.shrinkstatus == 1) {
                 _hasUmbrella = true;
             }
         }

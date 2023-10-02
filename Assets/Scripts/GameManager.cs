@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -28,17 +29,25 @@ public class GameManager : MonoBehaviour
     public Shrinker shrinker;
     public Inventory_Object_Trigger object_trigger;
     public Canvas maincanvas;
+    public Camera MainCamera;
+    public Camera finalCamera;
 
 
-    // Start is called before the first frame update
-    void Start()
+    public void restart()
     {
-        
+        string currentscenename = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(currentscenename);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void endGame()
     {
-        
+        MainCamera.gameObject.SetActive(false);
+        alice.gameObject.SetActive(false);
+        finalCamera.gameObject.SetActive(true);
+        maincanvas.worldCamera = finalCamera;
+        maincanvas.transform.GetChild(4).gameObject.SetActive(true);
+        maincanvas.transform.GetChild(3).gameObject.SetActive(false);
+        maincanvas.transform.GetChild(2).gameObject.SetActive(false);
+        maincanvas.transform.GetChild(0).gameObject.SetActive(false);
     }
 }

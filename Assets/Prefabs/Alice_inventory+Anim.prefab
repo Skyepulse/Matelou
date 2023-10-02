@@ -163,9 +163,9 @@ MonoBehaviour:
   minSpeedMult: 3
   maxSpeedMult: 1
   umbrella: {fileID: 7024381735401835402}
-  umbrellaAlpha: 1
   _hasUmbrella: 0
   triggerTreshold: 1
+  umbrellaAlpha: 1
   facingRight: 1
 --- !u!114 &292666701070056674
 MonoBehaviour:
@@ -182,7 +182,7 @@ MonoBehaviour:
   mainCamera: {fileID: 0}
   player: {fileID: 89349783366902242}
   shrinkFactor: 1
-  shrinkSpeed: 1
+  shrinkSpeed: 2
   canPickUpObjects: 1
   shrinkstatus: 2
 --- !u!114 &609010461110983572
@@ -274,7 +274,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: e206ad298da217d4e99bd9813fdd346f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

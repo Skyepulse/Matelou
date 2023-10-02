@@ -10,6 +10,8 @@ public class Door : MonoBehaviour
     private SpriteRenderer close_sprite;
     [SerializeField]
     public bool should_close_on_trigger;
+    [SerializeField]
+    private bool is_final;
 
     private void Start()
     {
@@ -21,6 +23,10 @@ public class Door : MonoBehaviour
         close_sprite.enabled = false;
         open_sprite.enabled = true;
         GetComponent<BoxCollider2D>().enabled = false;
+        if (is_final)
+        {
+            GameManager.Instance.endGame();
+        }
     }
 
     public void close()

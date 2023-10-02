@@ -163,9 +163,9 @@ MonoBehaviour:
   minSpeedMult: 3
   maxSpeedMult: 1
   umbrella: {fileID: 7024381735401835402}
-  umbrellaAlpha: 1
   _hasUmbrella: 0
   triggerTreshold: 1
+  umbrellaAlpha: 1
   facingRight: 1
 --- !u!114 &292666701070056674
 MonoBehaviour:
@@ -182,7 +182,7 @@ MonoBehaviour:
   mainCamera: {fileID: 0}
   player: {fileID: 89349783366902242}
   shrinkFactor: 1
-  shrinkSpeed: 5
+  shrinkSpeed: 2
   canPickUpObjects: 1
   shrinkstatus: 2
 --- !u!114 &609010461110983572

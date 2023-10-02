@@ -58,7 +58,7 @@ public abstract class Inventory_Object : MonoBehaviour
 
     public void setE()
     {
-        _otherSprite_renderer.enabled = true;
+        if (getPickupOptions()[GameManager.Instance.shrinker.shrinkstatus - 1])_otherSprite_renderer.enabled = true;
     }
 
     public void eraseE()

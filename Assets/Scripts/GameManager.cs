@@ -49,5 +49,7 @@ public class GameManager : MonoBehaviour
         maincanvas.transform.GetChild(3).gameObject.SetActive(false);
         maincanvas.transform.GetChild(2).gameObject.SetActive(false);
         maincanvas.transform.GetChild(0).gameObject.SetActive(false);
+        maincanvas.transform.GetChild(5).gameObject.SetActive(false);
+        maincanvas.transform.GetChild(6).gameObject.SetActive(false);
     }
 }
